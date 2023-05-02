@@ -1,9 +1,13 @@
-const complexNumber = function(real, complex) {
+const complexNumber = function(real, imaginary) {
   const getRealPart = function() {
     return real;
   }
 
-  return {getRealPart};
+  const getImaginaryPart = function() {
+    return imaginary;
+  }
+
+  return {getRealPart, getImaginaryPart};
 }
 
 exports.complexNumber = complexNumber;

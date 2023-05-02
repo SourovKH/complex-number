@@ -11,4 +11,11 @@ describe("complexNumber", function() {
     const complex = complexNumber(2, 3);
     deepStrictEqual(2, complex.getRealPart());
   });
+
+  it("should give the imaginary part of given imaginary number", function() {
+    const realPart = 2;
+    const imaginaryPart = 3;
+    const complex = complexNumber(2, 3);
+    deepStrictEqual(3, complex.getImaginaryPart());
+  });
 });
