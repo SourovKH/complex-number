@@ -1,5 +1,9 @@
-const main = function(input) {
-  return input;
+const complexNumber = function(real, complex) {
+  const getRealPart = function() {
+    return real;
+  }
+
+  return {getRealPart};
 }
 
-exports.main = main;
+exports.complexNumber = complexNumber;
