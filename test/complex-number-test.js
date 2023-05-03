@@ -1,28 +1,42 @@
 const fs = require('fs');
-const deepStrictEqual = require('assert');
-const {describe, it} = require('node:test');
+const { strictEqual, deepStrictEqual } = require('assert');
+const { describe, it } = require('node:test');
 
-const {complexNumber, operationOnComplexNumbers} = require("../src/complex-number.js");
+const {complexNumber} = require("../src/complex-number.js");
 
 describe("complexNumber", function() {
-  it("should give the real part of given imaginary number", function() {
-    const realPart = 2;
-    const imaginaryPart = 3;
-    const complex = complexNumber(2, 3);
-    deepStrictEqual(2, complex.getRealPart());
+  describe("getRealPart", function() {
+    it("should give the real part of given complex number", function() {
+      const complex = complexNumber(2, 3);
+      strictEqual(2, complex.getRealPart());
+    });
   });
 
-  it("should give the imaginary part of given imaginary number", function() {
-    const realPart = 2;
-    const imaginaryPart = 3;
-    const complex = complexNumber(2, 3);
-    deepStrictEqual(3, complex.getImaginaryPart());
+  describe("getImaginaryPart", function() {
+    it("should give the imaginary part of given complex number", function() {
+      const complex = complexNumber(2, 3);
+      strictEqual(3, complex.getImaginaryPart());
+    });
   });
 
-  it("should give the addition of two given complex numbers", function() {
-    const number1 = {realPart: 2, imaginaryPart: 3};
-    const number2 = {realPart: 1, imaginaryPart: 4};
-    const operation = operationOnComplexNumbers();
-    deepStrictEqual({realPart: 3, imaginaryPart: 7}, operation.add(number1, number2));
+  describe("add", function() {
+    it("should give the addition of two given complex numbers", function() {
+      const complexNumber1 = complexNumber(2, 3);
+      const complexNumber2 = complexNumber(5, 2);
+
+      strictEqual(7, complexNumber1.add(complexNumber2).getRealPart());
+      strictEqual(5, complexNumber1.add(complexNumber2).getImaginaryPart());
+
+    });
+  });
+
+  describe("multiply", function() {
+    it("should give the multiplication of two given complex numbers", function() {
+      const complexNumber1 = complexNumber(2, 3);
+      const complexNumber2 = complexNumber(1, 2);
+
+      strictEqual(-4, complexNumber1.multiply(complexNumber2).getRealPart());
+      strictEqual(7, complexNumber1.multiply(complexNumber2).getImaginaryPart());
+    });
   });
 });

@@ -7,19 +7,23 @@ const complexNumber = function(real, imaginary) {
     return imaginary;
   }
 
-  return {getRealPart, getImaginaryPart};
-}
+  const add = function(addend) {
+    const realSum =  real + addend.getRealPart();
+    const imaginarySum = imaginary + addend.getImaginaryPart();
 
-const operationOnComplexNumbers = function() {
-  const add = function(number1, number2) {
-    const realPart = number1.real + number2.real;
-    const imaginaryPart = number1.imaginary + number2.imaginary;
-
-    return {realPart, imaginaryPart};
+    return complexNumber(realSum, imaginarySum);
   }
 
-  return {add};
+  const multiply = function(multiplicand) {
+    const mr = multiplicand.getRealPart();
+    const mi = multiplicand.getImaginaryPart();
+    const realProduct = real * mr - imaginary * mi;
+    const imaginaryProduct = real * mi + imaginary * mr;
+
+    return complexNumber(realProduct, imaginaryProduct);
+  }
+
+  return {getRealPart, getImaginaryPart, add, multiply};
 }
 
 exports.complexNumber = complexNumber;
-exports.operationOnComplexNumbers = operationOnComplexNumbers;
