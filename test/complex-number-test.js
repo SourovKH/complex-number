@@ -2,7 +2,7 @@ const fs = require('fs');
 const { strictEqual, deepStrictEqual } = require('assert');
 const { describe, it } = require('node:test');
 
-const {complexNumber} = require("../src/complex-number.js");
+const { complexNumber, displayComplexNumber } = require("../src/complex-number.js");
 
 describe("complexNumber", function() {
   describe("getRealPart", function() {
@@ -37,6 +37,13 @@ describe("complexNumber", function() {
 
       strictEqual(-4, complexNumber1.multiply(complexNumber2).getRealPart());
       strictEqual(7, complexNumber1.multiply(complexNumber2).getImaginaryPart());
+    });
+  });
+
+  describe("displayComplexNumber", function() {
+    it("should give a complex number when both real and imaginary parts are positive", function() {
+      const complexNum = complexNumber(2, 3);
+      strictEqual("2 + 3i", displayComplexNumber(complexNum));
     });
   });
 });

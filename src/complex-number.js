@@ -17,13 +17,22 @@ const complexNumber = function(real, imaginary) {
   const multiply = function(multiplicand) {
     const mr = multiplicand.getRealPart();
     const mi = multiplicand.getImaginaryPart();
-    const realProduct = real * mr - imaginary * mi;
-    const imaginaryProduct = real * mi + imaginary * mr;
+    const realPart = real * mr - imaginary * mi;
+    const imaginaryPart = real * mi + imaginary * mr;
 
-    return complexNumber(realProduct, imaginaryProduct);
+    return complexNumber(realPart, imaginaryPart);
   }
 
   return {getRealPart, getImaginaryPart, add, multiply};
 }
 
+const displayComplexNumber = function(complexNumber) {
+  const realPart = complexNumber.getRealPart();
+  const imaginaryPart = complexNumber.getImaginaryPart();
+  const sign = "+";
+
+  return `${realPart} ${sign} ${imaginaryPart}i`;
+}
+
 exports.complexNumber = complexNumber;
+exports.displayComplexNumber = displayComplexNumber;
