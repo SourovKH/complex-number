@@ -2,7 +2,7 @@ const fs = require('fs');
 const { strictEqual, deepStrictEqual } = require('assert');
 const { describe, it } = require('node:test');
 
-const { complexNumber, displayComplexNumber } = require("../src/complex-number.js");
+const { complexNumber } = require("../src/complex-number.js");
 
 describe("complexNumber", function() {
   describe("getRealPart", function() {
@@ -40,10 +40,35 @@ describe("complexNumber", function() {
     });
   });
 
-  describe("displayComplexNumber", function() {
+  describe("showComplexNumber", function() {
     it("should give a complex number when both real and imaginary parts are positive", function() {
       const complexNum = complexNumber(2, 3);
-      strictEqual("2 + 3i", displayComplexNumber(complexNum));
+      strictEqual("2 + 3i", complexNum.showComplexNumber());
+    });
+
+    it("should give a complex number when real part is negative", function() {
+      const complexNum = complexNumber(-2, 3);
+      strictEqual("-2 + 3i", complexNum.showComplexNumber());
+    });
+
+    it("should give a complex number when imaginary part is negative", function() {
+      const complexNum = complexNumber(2, -3);
+      strictEqual("2 - 3i", complexNum.showComplexNumber());
+    });
+
+    it("should give a complex number when both real and imaginary parts are negative", function() {
+      const complexNum = complexNumber(-2, -3);
+      strictEqual("-2 - 3i", complexNum.showComplexNumber());
+    });
+
+    it("should give only real part when imaginry part is zero", function() {
+      const complexNum = complexNumber(2, 0);
+      strictEqual("2", complexNum.showComplexNumber());
+    });
+
+    it("should give only imaginary part when real part is zero", function() {
+      const complexNum = complexNumber(0, 3);
+      strictEqual("3i", complexNum.showComplexNumber());
     });
   });
 });

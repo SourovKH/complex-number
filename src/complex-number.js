@@ -23,16 +23,22 @@ const complexNumber = function(real, imaginary) {
     return complexNumber(realPart, imaginaryPart);
   }
 
-  return {getRealPart, getImaginaryPart, add, multiply};
-}
+  const showComplexNumber = function() {
+    if(real === 0) {
+      return `${imaginary}i`;
+    }
 
-const displayComplexNumber = function(complexNumber) {
-  const realPart = complexNumber.getRealPart();
-  const imaginaryPart = complexNumber.getImaginaryPart();
-  const sign = "+";
+    if(imaginary === 0) {
+      return `${real}`;
+    }
 
-  return `${realPart} ${sign} ${imaginaryPart}i`;
+    const sign = imaginary < 0 ? "-" : "+";
+
+    return `${real} ${sign} ${Math.abs(imaginary)}i`;
+
+  }
+
+  return {getRealPart, getImaginaryPart, add, multiply, showComplexNumber};
 }
 
 exports.complexNumber = complexNumber;
-exports.displayComplexNumber = displayComplexNumber;
