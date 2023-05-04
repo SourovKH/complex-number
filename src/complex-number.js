@@ -23,7 +23,7 @@ const complexNumber = function(real, imaginary) {
     return complexNumber(realPart, imaginaryPart);
   }
 
-  const showComplexNumber = function() {
+  const toString = function() {
     if(real === 0) {
       return `${imaginary}i`;
     }
@@ -33,12 +33,13 @@ const complexNumber = function(real, imaginary) {
     }
 
     const sign = imaginary < 0 ? "-" : "+";
+    const absoluteImaginary = Math.abs(imaginary);
 
-    return `${real} ${sign} ${Math.abs(imaginary)}i`;
+    return `${real} ${sign} ${absoluteImaginary}i`;
 
   }
 
-  return {getRealPart, getImaginaryPart, add, multiply, showComplexNumber};
+  return {getRealPart, getImaginaryPart, add, multiply, toString};
 }
 
 exports.complexNumber = complexNumber;
